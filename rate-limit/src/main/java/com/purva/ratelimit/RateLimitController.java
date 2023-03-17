@@ -18,6 +18,7 @@ public class RateLimitController {
 	@Autowired
 	private RateLimitPricePlanservice ratelimit;
 	
+	//bucket - bucket is interface and its implementation is bucket4j
 	private Bucket bucket = null;
 	
 	/**
@@ -25,11 +26,8 @@ public class RateLimitController {
 	 * @return
 	 */
 	@GetMapping("/token-generate/{clientToken}")
-	public 	ResponseEntity<String> generateToken(@PathVariable("clientToken") String clientToken){
-		//refil - rate at which token will be filled in the bucket	
-		//bucket - bucket is interface and its implementation is bucket4j
+	public 	ResponseEntity<String> generateToken(@PathVariable("clientToken") String clientToken){	
 		bucket=ratelimit.getPlanServiceBucket(clientToken);
-
 		return new ResponseEntity<String>("Generated Successfully||| \n"+ bucket.toString(), HttpStatus.OK);
 	}
 	
