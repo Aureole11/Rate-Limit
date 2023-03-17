@@ -14,12 +14,6 @@ import io.github.bucket4j.Bucket;
 @RestController
 @RequestMapping("/rate-limit")
 public class RateLimitController {
-
-	@Value("${rate.limit.client.basic}")
-	private String basic;
-	
-	@Value("${rate.limit.client.free}")
-	private String free;
 	
 	@Autowired
 	private RateLimitPricePlanservice ratelimit;
