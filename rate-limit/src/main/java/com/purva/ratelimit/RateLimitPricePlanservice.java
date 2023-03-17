@@ -37,8 +37,8 @@ public class RateLimitPricePlanservice {
 	}
 
 	private Bandwidth getClientBandwidth(String clientToken) {
-		
-		if(clientToken.equals(basic))//basic plan customers
+		if(clientToken.equals(basic))//basic plan customers	
+		//refil - rate at which token will be filled in the bucket
 		return Bandwidth.classic(5, Refill.intervally(5, Duration.ofMinutes(1)));
 		else if(clientToken.equals(free))//premium customers
 			return Bandwidth.classic(25, Refill.intervally(25, Duration.ofMinutes(1)));
